@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<header class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <h2><span style="margin-right:5px;" class="glyphicon glyphicon-road" aria-hidden="true"></span>Welcome To The YelpCamp!</h2>
+            <p>狼友们的自由港</p>
+            <a class="btn btn-primary btn-lg" href="/campground/new">Go to add a new camp!</a>
+        </div>
+    </div>
+</header>
+<div class="container text-center">
+    <div class="row">
+        <%campground.forEach(function(camp) {%>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= camp.image %>">
+                    <div class="caption">
+                        <h4><%= camp.name%></h4>
+                    </div>
+                    <a style="margin-bottom: 10px;" href="/campground/<%= camp._id %>" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+        <%});%>
+    </div>
+</div>
+
+<% include ../partials/footer %>
