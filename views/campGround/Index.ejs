@@ -1,16 +1,16 @@
 <% include ../partials/header %>
 
 <header class="container">
-    <div class="jumbotron">
-        <div class="container">
-            <h2><span style="margin-right:5px;" class="glyphicon glyphicon-road" aria-hidden="true"></span>Welcome To The YelpCamp!</h2>
-            <p>狼友们的自由港</p>
+    <div style="color: white;" class="jumbotron">
+        <div style="text-align: center" class="container">
+            <h2 style="color: black"><span style="margin-right:5px;" class="glyphicon glyphicon-road" aria-hidden="true"></span>Welcome To The YelpCamp!</h2>
+            <p style="color: black">狼友们的自由港</p>
             <a class="btn btn-primary btn-lg" href="/campground/new">Go to add a new camp!</a>
         </div>
     </div>
 </header>
 <div class="container text-center">
-    <div class="row">
+    <div class="row flex-wrap">
         <%campground.forEach(function(camp) {%>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">

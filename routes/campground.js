@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var campGround = require("../models/camp");
 var midddleware = require("../middleware");
+var geocoder = require('geocoder');
 
 //index
 router.get("/", function(req, res) {
@@ -25,6 +26,24 @@ router.post("/", midddleware.isLoggedIn, function(req, res) {
      username: req.user.username
    };
    var newCamp = {name: name, price: price, image: image, description: description, author: author};
+//   geocoder.geocode(req.body.location, function (err, data) {
+//       if (err || data.status === 'ZERO_RESULTS') {
+//           req.flash('error', 'Invalid address');
+//           return res.redirect('back');
+//         }
+//         var lat = data.results[0].geometry.location.lat;
+//         var lng = data.results[0].geometry.location.lng;
+//         var location = data.results[0].formatted_address;
+//         var newCamp = {name: name, price: price, image: image, description: description, author: author, location: location, lat: lat, lng: lng};
+//         campGround.create(newCamp, function(err, newCamp){
+//           if (err) {
+//               console.log("Can't add new camp");
+//           } else {
+//               req.flash("success", "Successfully Added New Campground!");
+//               res.redirect("/campground");
+//           }
+//       });
+//   });
    campGround.create(newCamp, function(err, newCamp){
        if (err) {
            console.log("Can't add new camp");

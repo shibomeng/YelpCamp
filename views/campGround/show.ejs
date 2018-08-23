@@ -9,6 +9,7 @@
                 <li class="info list-group-item"> Info 2</li>
                 <li class="info list-group-item"> Info 3</li>
             </div>
+            <!--<div id="map"></div>-->
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -16,7 +17,7 @@
                 <div class="caption-full">
                     <h3 class="pull-right">$<%= camp.price %>/Night</h3>
                     <h1><a><%= camp.name %></a></h1>
-                    <p><%= camp.description %></p>
+                    <p style="text-align: left; margin: 30px auto"><%= camp.description %></p>
                     <p>
                         <strong>Submitted by <em><%= camp.author.username %></em></strong>
                     </p>
@@ -32,13 +33,13 @@
                 <div class="text-right">
                     <a class="btn btn-success" href="/campground/<%= camp._id %>/comment/new">New Comment</a>
                 </div>
-                <hr>
+                <hr style="margin: 10px 0; border-bottom: 1px solid grey;">
                 <% camp.comment.forEach(function(data) { %>
                     <div class="row">
                         <div class="col-md-12">
                             <p>
                                 <strong><%= data.author.username %></strong>
-                                <span class="pull-right">10 Days Ago</span>
+                                <span class="pull-right"><%= moment(data.createdAt).fromNow() %></span>
                             </p>
                             <p><%= data.text %></p>
                             <% if (user && data.author.id.equals(user._id)) { %>
@@ -50,6 +51,7 @@
                                     <button class="btn btn-danger">Delete</button>
                                 </form>
                             <% } %>
+                            <div style="margin: 10px 0; border-bottom: 1px solid grey;"></div>
                         </div>
                     </div>
                 <% }); %>

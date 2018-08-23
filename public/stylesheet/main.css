@@ -1,3 +1,9 @@
+.jumbotron {
+    background: url(http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180802/4069fbf8bff04fb9b9a819c495971440.jpeg);
+	background-position: center;
+	background-size: cover;
+}
+
 .thumbnail img {
     width: 100%;
 }
@@ -26,3 +32,13 @@
     background: steelblue;
     color: white;
 }
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*#map {*/
+/*    height: 400px;*/
+/*    width: 100%;*/
+/*}*/
