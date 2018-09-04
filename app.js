@@ -1,7 +1,7 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    seedDB = require("./seed.js"),
+    // seedDB = require("./seed.js"),
     passport = require("passport"),
     passportLocal = require("passport-local"),
     user = require("./models/user"),
@@ -15,9 +15,11 @@ var campgroundRoutes = require("./routes/campground"),
     authRoutes = require("./routes/index");
 
 // seedDB();
-mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
+mongoose.connect("mongodb://shibomeng:Meng199776@ds145072.mlab.com:45072/shibo_yelp", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());

@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var campGround = require("../models/camp");
 var midddleware = require("../middleware");
-var geocoder = require('geocoder');
+// var geocoder = require('geocoder');
 
 //index
 router.get("/", function(req, res) {
@@ -61,10 +61,11 @@ router.get("/new", midddleware.isLoggedIn, function(req, res) {
 
 
 //show
-router.get("/:id", function(req, res) {
+router.get("/:id", function(req, res, next) {
     campGround.findById(req.params.id).populate("comment").exec(function(err, foundcamp) {
         if (err) {
             console.log("Didn't find the camp");
+            next();
         } else {
             res.render("campGround/show", {camp: foundcamp});
         }
@@ -93,5 +94,12 @@ router.delete("/:id",  midddleware.checkCampgroundOwnership, function(req, res) 
        res.redirect("/campground");
     });
 });
+
+
+
+router.get("/colorgame", function(req, res) {
+    res.render("colorgame/Index");
+});
+
 
 module.exports = router;
